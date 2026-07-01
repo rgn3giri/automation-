@@ -6,7 +6,7 @@ test('navigate to Postman website and check for latest version', async ({ page }
   await page.waitForLoadState('networkidle', { timeout: 30000 });
 
   const pageText = await page.locator('body').innerText();
-  const versionMatch = pageText.match(/version|v\d+\.\d+\.\d+|\d+\.\d+\.\d+/i);
+  const versionMatch = pageText.match(/version|v\d+\.\d+\.\d+|\d+\.\d+\.\d+/i);...
   
   if (versionMatch) {
     console.log(`Found version info: ${versionMatch[0]}`);
