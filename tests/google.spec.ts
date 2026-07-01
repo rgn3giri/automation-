@@ -1,6 +1,6 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect, Page } from '@playwright/test';
 
-test('search Google for Giri and then search tree after robot verification', async ({ page }) => {
+test('search Google for Giri and then search tree after robot verification', async ({ page }: { page: Page }) => {
   await page.goto('https://www.google.com', { waitUntil: 'domcontentloaded' });
 
   const acceptButton = page.getByRole('button', { name: /accept|agree|i agree/i }).first();
@@ -32,7 +32,7 @@ test('search Google for Giri and then search tree after robot verification', asy
   expect(bodyText).toMatch(/tree/i);
 });
 
-test('navigate to Postman website and check for latest version', async ({ page }) => {
+test('navigate to Postman website and check for latest version', async ({ page }: { page: Page }) => {
   await page.goto('https://www.postman.com/', { waitUntil: 'domcontentloaded' });
 
   await page.waitForLoadState('networkidle', { timeout: 30000 });
